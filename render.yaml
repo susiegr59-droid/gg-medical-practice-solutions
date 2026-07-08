@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: gg-medical-practice-solutions
+    runtime: static
+    buildCommand: "true"
+    staticPublishPath: .
+    autoDeployTrigger: commit
+    domains:
+      - ggmedpro.com
