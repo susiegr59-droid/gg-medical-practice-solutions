@@ -205,7 +205,11 @@
               gaps, prior authorization process, credentialing status, or practice start-up plans.
             </p>
           </div>
-          <div class="contact-panel" aria-label="Contact information and consultation request mockup">
+          <form class="contact-panel" id="consultation-form" aria-label="Contact information and consultation request">
+            <div class="contact-method">
+              <span>Email</span>
+              <a href="mailto:info@jlgbilling.com">info@jlgbilling.com</a>
+            </div>
             <div class="contact-method">
               <span>Phone</span>
               <a href="tel:+13014911219">301-491-1219</a>
@@ -216,11 +220,11 @@
             </div>
             <label>
               Name
-              <input type="text" name="name" autocomplete="name">
+              <input type="text" name="name" autocomplete="name" required>
             </label>
             <label>
               Email
-              <input type="email" name="email" autocomplete="email">
+              <input type="email" name="email" autocomplete="email" required>
             </label>
             <label>
               What do you need help with?
@@ -233,8 +237,12 @@
                 <option>Training</option>
               </select>
             </label>
-            <button class="button primary" type="button">Send Request</button>
-          </div>
+            <label>
+              Message
+              <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>
+            </label>
+            <button class="button primary" type="submit">Send Request</button>
+          </form>
         </div>
       </section>
     </main>
@@ -243,5 +251,29 @@
       <p>&copy; 2026 G&G Medical Practice Solutions, LLC. ggmedpro.com</p>
       <a href="#top">Back to top</a>
     </footer>
+    <script>
+      const consultationForm = document.querySelector("#consultation-form");
+
+      consultationForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(consultationForm);
+        const name = formData.get("name").trim();
+        const email = formData.get("email").trim();
+        const service = formData.get("service");
+        const message = formData.get("message").trim();
+        const subject = `G&G consultation request from ${name}`;
+        const body = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Service interest: ${service}`,
+          "",
+          "Message:",
+          message || "No message provided.",
+        ].join("\n");
+
+        window.location.href = `mailto:info@jlgbilling.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
   </body>
 </html>

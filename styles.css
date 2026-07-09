@@ -458,7 +458,8 @@ label {
 }
 
 input,
-select {
+select,
+textarea {
   width: 100%;
   min-height: 46px;
   padding: 11px 12px;
@@ -469,6 +470,11 @@ select {
   font: inherit;
   text-transform: none;
   letter-spacing: 0;
+}
+
+textarea {
+  min-height: 112px;
+  resize: vertical;
 }
 
 .site-footer {
