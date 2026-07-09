@@ -206,6 +206,11 @@ h3 {
   background: #0b3d86;
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 .button.secondary {
   color: var(--navy);
   background: rgba(255, 255, 255, 0.78);

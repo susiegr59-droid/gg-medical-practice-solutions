@@ -205,7 +205,13 @@
               gaps, prior authorization process, credentialing status, or practice start-up plans.
             </p>
           </div>
-          <form class="contact-panel" id="consultation-form" aria-label="Contact information and consultation request">
+          <form
+            class="contact-panel"
+            id="consultation-form"
+            action="https://formspree.io/f/xbdvvoek"
+            method="POST"
+            aria-label="Contact information and consultation request"
+          >
             <div class="contact-method">
               <span>Email</span>
               <a href="mailto:info@jlgbilling.com">info@jlgbilling.com</a>
@@ -227,6 +233,10 @@
               <input type="email" name="email" autocomplete="email" required>
             </label>
             <label>
+              Practice specialty
+              <input type="text" name="specialty" autocomplete="organization-title" placeholder="e.g. Family medicine, pain management, behavioral health">
+            </label>
+            <label>
               What do you need help with?
               <select name="service">
                 <option>Revenue cycle management</option>
@@ -241,6 +251,7 @@
               Message
               <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>
             </label>
+            <input type="hidden" name="_subject" value="New G&G consultation request">
             <button class="button primary" type="submit">Send Request</button>
             <p class="form-status" id="form-status" aria-live="polite"></p>
           </form>
@@ -254,34 +265,37 @@
     </footer>
     <script>
       const consultationForm = document.querySelector("#consultation-form");
+      const formStatus = document.querySelector("#form-status");
+      const submitButton = consultationForm.querySelector('button[type="submit"]');
 
       consultationForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const formData = new FormData(consultationForm);
-        const name = formData.get("name").trim();
-        const email = formData.get("email").trim();
-        const service = formData.get("service");
-        const message = formData.get("message").trim();
-        const subject = `G&G consultation request from ${name}`;
-        const body = [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          `Service interest: ${service}`,
-          "",
-          "Message:",
-          message || "No message provided.",
-        ].join("\n");
+        formStatus.textContent = "Sending your request...";
+        submitButton.disabled = true;
 
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@jlgbilling.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        const emailWindow = window.open(gmailUrl, "_blank", "noopener");
-        const formStatus = document.querySelector("#form-status");
+        fetch(consultationForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Form submission failed");
+            }
 
-        formStatus.innerHTML = 'A prepared email draft should open in a new tab. If it does not, email <a href="mailto:info@jlgbilling.com">info@jlgbilling.com</a> or call <a href="tel:+13014911219">301-491-1219</a>.';
-
-        if (!emailWindow) {
-          window.location.href = `mailto:info@jlgbilling.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        }
+            consultationForm.reset();
+            formStatus.textContent = "Thank you. Your request has been sent.";
+          })
+          .catch(() => {
+            formStatus.innerHTML = 'Something went wrong. Please email <a href="mailto:info@jlgbilling.com">info@jlgbilling.com</a> or call <a href="tel:+13014911219">301-491-1219</a>.';
+          })
+          .finally(() => {
+            submitButton.disabled = false;
+          });
       });
     </script>
   </body>
