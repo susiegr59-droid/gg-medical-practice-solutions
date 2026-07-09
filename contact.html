@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Contact G&G Medical Practice Solutions to request help with revenue cycle management, credentialing, forms, Q&A support, consulting, or training."
+    >
+    <title>Contact | G&G Medical Practice Solutions, LLC</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="G&G Medical Practice Solutions home">
+        <img src="assets/gg-logo.png" alt="" class="brand-logo">
+        <span>
+          <strong>G&G</strong>
+          <span>Medical Practice Solutions, LLC</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="forms.html">Forms</a>
+        <a href="qa-support.html">Q&A Plans</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section contact" aria-labelledby="contact-title">
+        <div class="section-inner contact-grid">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h1 id="contact-title">Ready to strengthen your practice operations?</h1>
+            <p>
+              Start with a conversation about your current workflow, billing needs, staff training
+              gaps, prior authorization process, credentialing status, or practice start-up plans.
+            </p>
+          </div>
+          <form
+            class="contact-panel"
+            id="consultation-form"
+            action="https://formspree.io/f/xbdvvoek"
+            method="POST"
+            aria-label="Contact information and consultation request"
+          >
+            <label>
+              Practice name
+              <input type="text" name="practice_name" autocomplete="organization" required>
+            </label>
+            <label>
+              Requester name
+              <input type="text" name="requester_name" autocomplete="name" required>
+            </label>
+            <label>
+              Requester title
+              <input type="text" name="requester_title" autocomplete="organization-title" placeholder="e.g. Practice manager, provider, owner">
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" autocomplete="tel" placeholder="Best callback number">
+            </label>
+            <label>
+              Practice address
+              <input type="text" name="address" autocomplete="street-address" placeholder="Street, city, state">
+            </label>
+            <label>
+              Practice specialty
+              <input type="text" name="specialty" autocomplete="organization-title" placeholder="e.g. Family medicine, pain management, behavioral health">
+            </label>
+            <label>
+              Preferred contact method
+              <select name="preferred_contact">
+                <option>Email</option>
+                <option>Phone call</option>
+                <option>Text message</option>
+                <option>No preference</option>
+              </select>
+            </label>
+            <label>
+              What do you need help with?
+              <select name="service">
+                <option>Revenue cycle management</option>
+                <option>Credentialing</option>
+                <option>Office forms and policies</option>
+                <option>Q&A assistance</option>
+                <option>Q&A subscription</option>
+                <option>Consulting</option>
+                <option>Training</option>
+              </select>
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>
+            </label>
+            <input type="hidden" name="selected_qa_plan" id="selected-qa-plan">
+            <input type="hidden" name="form_interest" id="form-interest">
+            <input type="hidden" name="_subject" value="New G&G consultation request">
+            <button class="button primary" type="submit">Send Request</button>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 G&G Medical Practice Solutions, LLC. ggmedpro.com</p>
+      <a href="index.html">Back to home</a>
+    </footer>
+    <script src="site.js"></script>
+  </body>
+</html>
