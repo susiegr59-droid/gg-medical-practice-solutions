@@ -212,21 +212,17 @@
             method="POST"
             aria-label="Contact information and consultation request"
           >
-            <div class="contact-method">
-              <span>Email</span>
-              <a href="mailto:Info@ggmedpro.com">Info@ggmedpro.com</a>
-            </div>
-            <div class="contact-method">
-              <span>Phone</span>
-              <a href="tel:+13014911219">301-491-1219</a>
-            </div>
-            <div class="contact-method">
-              <span>Phone</span>
-              <a href="tel:+13014011525">301-401-1525</a>
-            </div>
             <label>
-              Name
-              <input type="text" name="name" autocomplete="name" required>
+              Practice name
+              <input type="text" name="practice_name" autocomplete="organization" required>
+            </label>
+            <label>
+              Requester name
+              <input type="text" name="requester_name" autocomplete="name" required>
+            </label>
+            <label>
+              Requester title
+              <input type="text" name="requester_title" autocomplete="organization-title" placeholder="e.g. Practice manager, provider, owner">
             </label>
             <label>
               Email
@@ -308,7 +304,7 @@
             formStatus.textContent = "Thank you. Your request has been sent.";
           })
           .catch(() => {
-            formStatus.innerHTML = 'Something went wrong. Please email <a href="mailto:Info@ggmedpro.com">Info@ggmedpro.com</a> or call <a href="tel:+13014911219">301-491-1219</a>.';
+            formStatus.innerHTML = 'Something went wrong. Please email <a href="mailto:Info@ggmedpro.com">Info@ggmedpro.com</a>.';
           })
           .finally(() => {
             submitButton.disabled = false;
