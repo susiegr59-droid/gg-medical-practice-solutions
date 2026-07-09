@@ -25,6 +25,30 @@ if (consultationForm) {
     support: "Support - 3 questions/month ($85)",
     priority: "Priority Q&A - 5 questions/month ($125)",
   };
+  const serviceMap = {
+    "revenue-cycle": {
+      label: "Revenue cycle management",
+      message: "I am interested in revenue cycle management support for my practice.",
+    },
+    credentialing: {
+      label: "Credentialing",
+      message: "I am interested in credentialing support for my practice.",
+    },
+    consulting: {
+      label: "Consulting",
+      message: "I am interested in consulting support for my practice.",
+    },
+    training: {
+      label: "Training",
+      message: "I am interested in training support for my practice.",
+    },
+  };
+  const requestedService = serviceMap[params.get("service")];
+
+  if (requestedService) {
+    serviceSelect.value = requestedService.label;
+    messageField.value = requestedService.message;
+  }
 
   if (params.get("service") === "forms") {
     formInterest.value = "Office forms library";

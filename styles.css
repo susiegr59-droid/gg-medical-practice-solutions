@@ -301,6 +301,11 @@ h3 {
   font-size: clamp(1.05rem, 2vw, 1.24rem);
 }
 
+.service-promise {
+  max-width: 980px !important;
+  font-size: clamp(1rem, 1.6vw, 1.12rem) !important;
+}
+
 .home-links {
   background: #f1f6fa;
 }
@@ -420,6 +425,9 @@ h3 {
 }
 
 .solution-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
   min-height: 230px;
   padding: 28px;
   background: var(--white);
@@ -440,6 +448,30 @@ h3 {
 .solution-card p {
   margin: 0;
   color: var(--muted);
+}
+
+.card-link {
+  align-self: end;
+  justify-self: start;
+  margin-top: 18px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.card-link::after {
+  content: " ->";
+}
+
+.solution-card.featured .card-link {
+  color: #fff;
+}
+
+.card-link:hover {
+  color: var(--blue);
+}
+
+.solution-card.featured .card-link:hover {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .forms-library {
