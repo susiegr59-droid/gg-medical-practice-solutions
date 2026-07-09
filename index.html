@@ -22,6 +22,7 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#solutions">Solutions</a>
+        <a href="#forms-library">Forms</a>
         <a href="#qa-support">Q&A Plans</a>
         <a href="#collaboration">About</a>
         <a href="#experience">Experience</a>
@@ -121,6 +122,54 @@
               </p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section forms-library" id="forms-library" aria-labelledby="forms-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Office forms library</p>
+            <h2 id="forms-title">Ready-to-use forms and policy templates for medical practices.</h2>
+            <p>
+              G&G can help practices build, update, or organize the everyday forms needed for
+              intake, compliance, front desk workflows, billing communication, and office operations.
+            </p>
+          </div>
+          <details class="forms-disclosure">
+            <summary>Preview form categories</summary>
+            <div class="forms-panel">
+              <div class="forms-group">
+                <h3>Patient Intake</h3>
+                <ul>
+                  <li>Registration and demographic forms</li>
+                  <li>Insurance and contact update forms</li>
+                  <li>Health history intake support forms</li>
+                </ul>
+              </div>
+              <div class="forms-group">
+                <h3>HIPAA & Consent</h3>
+                <ul>
+                  <li>HIPAA privacy notice and acknowledgment forms</li>
+                  <li>Treatment and communication consent forms</li>
+                  <li>Medical records release request forms</li>
+                </ul>
+              </div>
+              <div class="forms-group">
+                <h3>Billing & Office Policies</h3>
+                <ul>
+                  <li>Financial and payment policy templates</li>
+                  <li>Cancellation and office policy templates</li>
+                  <li>Workflow, referral, and authorization trackers</li>
+                </ul>
+              </div>
+            </div>
+            <p class="forms-note">
+              This preview shows categories only. Full templates and customized documents are provided
+              through a paid forms project or service package. Compliance-sensitive templates should be
+              reviewed by the practice's legal or compliance advisor.
+            </p>
+            <a class="button secondary forms-select" href="#contact">Ask about office forms</a>
+          </details>
         </div>
       </section>
 
@@ -313,6 +362,7 @@
               <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>
             </label>
             <input type="hidden" name="selected_qa_plan" id="selected-qa-plan">
+            <input type="hidden" name="form_interest" id="form-interest">
             <input type="hidden" name="_subject" value="New G&G consultation request">
             <button class="button primary" type="submit">Send Request</button>
             <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -331,6 +381,7 @@
       const submitButton = consultationForm.querySelector('button[type="submit"]');
       const serviceSelect = consultationForm.querySelector('select[name="service"]');
       const selectedQaPlan = document.querySelector("#selected-qa-plan");
+      const formInterest = document.querySelector("#form-interest");
       const messageField = consultationForm.querySelector('textarea[name="message"]');
       const qaToggle = document.querySelector(".qa-toggle");
       const qaPlanPanel = document.querySelector("#qa-plan-panel");
@@ -348,6 +399,14 @@
           selectedQaPlan.value = plan;
           serviceSelect.value = "Q&A subscription";
           messageField.value = `I am interested in the ${plan} Q&A subscription plan.`;
+        });
+      });
+
+      document.querySelectorAll(".forms-select").forEach((formsLink) => {
+        formsLink.addEventListener("click", () => {
+          formInterest.value = "Office forms library";
+          serviceSelect.value = "Office forms and policies";
+          messageField.value = "I am interested in office forms and policy templates for my practice.";
         });
       });
 

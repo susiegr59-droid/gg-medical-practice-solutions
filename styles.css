@@ -370,6 +370,61 @@ h3 {
   color: var(--muted);
 }
 
+.forms-library {
+  background: var(--white);
+}
+
+.forms-disclosure {
+  padding: 28px;
+  background: #f8fbfd;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.forms-disclosure summary {
+  color: var(--navy);
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.forms-disclosure summary::marker {
+  color: var(--blue);
+}
+
+.forms-panel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.forms-group {
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid rgba(217, 227, 236, 0.95);
+  border-radius: 8px;
+}
+
+.forms-group h3 {
+  margin-bottom: 12px;
+}
+
+.forms-group ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.forms-note {
+  max-width: 880px;
+  margin: 22px 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
 .qa-plan-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -620,6 +675,7 @@ textarea {
   .collaboration-grid,
   .contact-grid,
   .solution-grid,
+  .forms-panel,
   .qa-plan-grid,
   .process-steps {
     grid-template-columns: 1fr;
