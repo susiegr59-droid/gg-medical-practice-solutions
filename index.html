@@ -22,6 +22,7 @@
       </a>
       <nav class="nav" aria-label="Primary navigation">
         <a href="#solutions">Solutions</a>
+        <a href="#qa-support">Q&A Plans</a>
         <a href="#collaboration">About</a>
         <a href="#experience">Experience</a>
         <a href="#process">Process</a>
@@ -120,6 +121,47 @@
               </p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section qa-support" id="qa-support" aria-labelledby="qa-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Q&A subscription support</p>
+            <h2 id="qa-title">Get practical answers without booking a full consulting project.</h2>
+            <p>
+              For practices that need occasional help with billing, credentialing, office workflows,
+              forms, policies, training, or payer process questions, G&G offers simple monthly Q&A
+              support plans.
+            </p>
+          </div>
+          <div class="qa-plan-grid">
+            <article class="qa-plan">
+              <span class="plan-kicker">Quick Help</span>
+              <h3>1 question</h3>
+              <p class="plan-price">$35<span>/month</span></p>
+              <p>Best for a focused question or quick second opinion on a billing or office process issue.</p>
+              <a class="button secondary qa-select" href="#contact" data-plan="Quick Help - 1 question/month ($35)">Ask about this plan</a>
+            </article>
+            <article class="qa-plan featured">
+              <span class="plan-kicker">Most useful</span>
+              <h3>3 questions</h3>
+              <p class="plan-price">$85<span>/month</span></p>
+              <p>Good for practices that want ongoing access to practical administrative and revenue cycle guidance.</p>
+              <a class="button primary qa-select" href="#contact" data-plan="Support - 3 questions/month ($85)">Ask about this plan</a>
+            </article>
+            <article class="qa-plan">
+              <span class="plan-kicker">Priority Q&A</span>
+              <h3>5 questions</h3>
+              <p class="plan-price">$125<span>/month</span></p>
+              <p>Built for teams that need more frequent help with payer issues, training, workflow, or forms.</p>
+              <a class="button secondary qa-select" href="#contact" data-plan="Priority Q&A - 5 questions/month ($125)">Ask about this plan</a>
+            </article>
+          </div>
+          <p class="qa-note">
+            Q&A support is for billing, credentialing, workflow, training, forms, policy, and office
+            operations questions. It does not include legal, tax, or clinical medical advice.
+          </p>
         </div>
       </section>
 
@@ -256,6 +298,7 @@
                 <option>Credentialing</option>
                 <option>Office forms and policies</option>
                 <option>Q&A assistance</option>
+                <option>Q&A subscription</option>
                 <option>Consulting</option>
                 <option>Training</option>
               </select>
@@ -264,6 +307,7 @@
               Message
               <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>
             </label>
+            <input type="hidden" name="selected_qa_plan" id="selected-qa-plan">
             <input type="hidden" name="_subject" value="New G&G consultation request">
             <button class="button primary" type="submit">Send Request</button>
             <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -280,6 +324,18 @@
       const consultationForm = document.querySelector("#consultation-form");
       const formStatus = document.querySelector("#form-status");
       const submitButton = consultationForm.querySelector('button[type="submit"]');
+      const serviceSelect = consultationForm.querySelector('select[name="service"]');
+      const selectedQaPlan = document.querySelector("#selected-qa-plan");
+      const messageField = consultationForm.querySelector('textarea[name="message"]');
+
+      document.querySelectorAll(".qa-select").forEach((planLink) => {
+        planLink.addEventListener("click", () => {
+          const plan = planLink.dataset.plan;
+          selectedQaPlan.value = plan;
+          serviceSelect.value = "Q&A subscription";
+          messageField.value = `I am interested in the ${plan} Q&A subscription plan.`;
+        });
+      });
 
       consultationForm.addEventListener("submit", (event) => {
         event.preventDefault();

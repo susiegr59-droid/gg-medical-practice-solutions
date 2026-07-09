@@ -324,10 +324,21 @@ h3 {
   background: #f1f6fa;
 }
 
+.qa-support {
+  background: var(--white);
+}
+
 .section-heading {
   display: grid;
   gap: 12px;
   margin-bottom: 34px;
+}
+
+.section-heading > p:not(.eyebrow) {
+  max-width: 780px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
 }
 
 .solution-grid {
@@ -357,6 +368,80 @@ h3 {
 .solution-card p {
   margin: 0;
   color: var(--muted);
+}
+
+.qa-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.qa-plan {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-height: 330px;
+  padding: 28px;
+  background: #f8fbfd;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.qa-plan.featured {
+  background: var(--navy);
+  border-color: var(--navy);
+  box-shadow: var(--shadow);
+}
+
+.qa-plan.featured,
+.qa-plan.featured h3,
+.qa-plan.featured .plan-kicker {
+  color: #fff;
+}
+
+.qa-plan p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.qa-plan.featured p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.plan-kicker {
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.plan-price {
+  color: var(--navy) !important;
+  font-size: clamp(2.15rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.qa-plan.featured .plan-price {
+  color: #fff !important;
+}
+
+.plan-price span {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.qa-plan .button {
+  align-self: end;
+  margin-top: 6px;
+}
+
+.qa-note {
+  max-width: 880px;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
 }
 
 .experience-copy {
@@ -526,6 +611,7 @@ textarea {
   .collaboration-grid,
   .contact-grid,
   .solution-grid,
+  .qa-plan-grid,
   .process-steps {
     grid-template-columns: 1fr;
   }
@@ -545,6 +631,7 @@ textarea {
   }
 
   .solution-card,
+  .qa-plan,
   .process-steps article {
     min-height: auto;
   }
