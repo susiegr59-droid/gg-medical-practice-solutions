@@ -242,6 +242,7 @@
               <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>
             </label>
             <button class="button primary" type="submit">Send Request</button>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
           </form>
         </div>
       </section>
@@ -272,7 +273,15 @@
           message || "No message provided.",
         ].join("\n");
 
-        window.location.href = `mailto:info@jlgbilling.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@jlgbilling.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const emailWindow = window.open(gmailUrl, "_blank", "noopener");
+        const formStatus = document.querySelector("#form-status");
+
+        formStatus.innerHTML = 'A prepared email draft should open in a new tab. If it does not, email <a href="mailto:info@jlgbilling.com">info@jlgbilling.com</a> or call <a href="tel:+13014911219">301-491-1219</a>.';
+
+        if (!emailWindow) {
+          window.location.href = `mailto:info@jlgbilling.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
       });
     </script>
   </body>
