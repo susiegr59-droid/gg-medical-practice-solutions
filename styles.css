@@ -99,6 +99,10 @@ a {
   isolation: isolate;
 }
 
+.home-hero {
+  min-height: calc(100vh - 72px);
+}
+
 .hero-image {
   position: absolute;
   inset: 0;
