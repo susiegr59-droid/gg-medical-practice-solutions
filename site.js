@@ -42,6 +42,14 @@ if (consultationForm) {
       label: "Training",
       message: "I am interested in training support for my practice.",
     },
+    "a-la-carte-practice": {
+      label: "A la carte practice support",
+      message: "I am interested in a la carte support for a specific practice issue.",
+    },
+    "public-auth-help": {
+      label: "Patient authorization or denial help",
+      message: "I am interested in help understanding or organizing a prior authorization, referral, or denial issue.",
+    },
   };
   const requestedService = serviceMap[params.get("service")];
 

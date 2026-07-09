@@ -41,7 +41,7 @@ a {
   justify-content: space-between;
   gap: 24px;
   min-height: 72px;
-  padding: 12px clamp(18px, 5vw, 72px);
+  padding: 12px clamp(18px, 4vw, 56px);
   background: rgba(251, 252, 254, 0.94);
   border-bottom: 1px solid rgba(217, 227, 236, 0.9);
   backdrop-filter: blur(14px);
@@ -79,9 +79,11 @@ a {
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 3vw, 30px);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px clamp(12px, 1.8vw, 22px);
   color: var(--muted);
-  font-size: 0.96rem;
+  font-size: 0.94rem;
 }
 
 .nav a:hover,
@@ -320,7 +322,7 @@ h3 {
 
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 16px;
 }
 
@@ -411,6 +413,88 @@ h3 {
 
 .qa-support {
   background: var(--white);
+}
+
+.ala-carte {
+  background: var(--white);
+}
+
+.support-lanes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.support-lane {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  min-height: 620px;
+  padding: clamp(28px, 4vw, 42px);
+  background: #f8fbfd;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 42px rgba(6, 43, 99, 0.06);
+}
+
+.support-lane h3 {
+  color: var(--navy);
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+}
+
+.support-lane p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+.practice-lane {
+  color: #fff;
+  background: linear-gradient(135deg, #061d42, #06356f);
+  border-color: #06356f;
+}
+
+.practice-lane h3,
+.practice-lane .plan-kicker {
+  color: #fff;
+}
+
+.practice-lane p,
+.practice-lane .support-list {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.support-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.support-lane .button {
+  align-self: end;
+  justify-self: start;
+  margin-top: auto;
+}
+
+.disclaimer-panel {
+  margin-top: 24px;
+  padding: clamp(24px, 4vw, 36px);
+  background: var(--blue-soft);
+  border: 1px solid rgba(71, 127, 174, 0.22);
+  border-left: 5px solid var(--blue);
+  border-radius: 8px;
+}
+
+.disclaimer-panel h2 {
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+}
+
+.disclaimer-panel p {
+  max-width: 980px;
+  margin: 14px 0 0;
+  color: #33485d;
 }
 
 .section-heading {
@@ -986,6 +1070,7 @@ textarea {
   .collaboration-grid,
   .contact-grid,
   .overview-grid,
+  .support-lanes,
   .solution-grid,
   .forms-panel,
   .qa-plan-grid,
