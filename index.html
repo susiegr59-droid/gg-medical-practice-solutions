@@ -134,34 +134,39 @@
               forms, policies, training, or payer process questions, G&G offers simple monthly Q&A
               support plans.
             </p>
+            <button class="button secondary qa-toggle" type="button" aria-expanded="false" aria-controls="qa-plan-panel">
+              View Q&A options
+            </button>
           </div>
-          <div class="qa-plan-grid">
-            <article class="qa-plan">
-              <span class="plan-kicker">Quick Help</span>
-              <h3>1 question</h3>
-              <p class="plan-price">$35<span>/month</span></p>
-              <p>Best for a focused question or quick second opinion on a billing or office process issue.</p>
-              <a class="button secondary qa-select" href="#contact" data-plan="Quick Help - 1 question/month ($35)">Ask about this plan</a>
-            </article>
-            <article class="qa-plan featured">
-              <span class="plan-kicker">Most useful</span>
-              <h3>3 questions</h3>
-              <p class="plan-price">$85<span>/month</span></p>
-              <p>Good for practices that want ongoing access to practical administrative and revenue cycle guidance.</p>
-              <a class="button primary qa-select" href="#contact" data-plan="Support - 3 questions/month ($85)">Ask about this plan</a>
-            </article>
-            <article class="qa-plan">
-              <span class="plan-kicker">Priority Q&A</span>
-              <h3>5 questions</h3>
-              <p class="plan-price">$125<span>/month</span></p>
-              <p>Built for teams that need more frequent help with payer issues, training, workflow, or forms.</p>
-              <a class="button secondary qa-select" href="#contact" data-plan="Priority Q&A - 5 questions/month ($125)">Ask about this plan</a>
-            </article>
+          <div class="qa-plan-panel" id="qa-plan-panel" hidden>
+            <div class="qa-plan-grid">
+              <article class="qa-plan">
+                <span class="plan-kicker">Quick Help</span>
+                <h3>1 question</h3>
+                <p class="plan-price">$35<span>/month</span></p>
+                <p>Best for a focused question or quick second opinion on a billing or office process issue.</p>
+                <a class="button secondary qa-select" href="#contact" data-plan="Quick Help - 1 question/month ($35)">Ask about this plan</a>
+              </article>
+              <article class="qa-plan featured">
+                <span class="plan-kicker">Most useful</span>
+                <h3>3 questions</h3>
+                <p class="plan-price">$85<span>/month</span></p>
+                <p>Good for practices that want ongoing access to practical administrative and revenue cycle guidance.</p>
+                <a class="button primary qa-select" href="#contact" data-plan="Support - 3 questions/month ($85)">Ask about this plan</a>
+              </article>
+              <article class="qa-plan">
+                <span class="plan-kicker">Priority Q&A</span>
+                <h3>5 questions</h3>
+                <p class="plan-price">$125<span>/month</span></p>
+                <p>Built for teams that need more frequent help with payer issues, training, workflow, or forms.</p>
+                <a class="button secondary qa-select" href="#contact" data-plan="Priority Q&A - 5 questions/month ($125)">Ask about this plan</a>
+              </article>
+            </div>
+            <p class="qa-note">
+              Q&A support is for billing, credentialing, workflow, training, forms, policy, and office
+              operations questions. It does not include legal, tax, or clinical medical advice.
+            </p>
           </div>
-          <p class="qa-note">
-            Q&A support is for billing, credentialing, workflow, training, forms, policy, and office
-            operations questions. It does not include legal, tax, or clinical medical advice.
-          </p>
         </div>
       </section>
 
@@ -327,6 +332,15 @@
       const serviceSelect = consultationForm.querySelector('select[name="service"]');
       const selectedQaPlan = document.querySelector("#selected-qa-plan");
       const messageField = consultationForm.querySelector('textarea[name="message"]');
+      const qaToggle = document.querySelector(".qa-toggle");
+      const qaPlanPanel = document.querySelector("#qa-plan-panel");
+
+      qaToggle.addEventListener("click", () => {
+        const isHidden = qaPlanPanel.hasAttribute("hidden");
+        qaPlanPanel.toggleAttribute("hidden", !isHidden);
+        qaToggle.setAttribute("aria-expanded", String(isHidden));
+        qaToggle.textContent = isHidden ? "Hide Q&A options" : "View Q&A options";
+      });
 
       document.querySelectorAll(".qa-select").forEach((planLink) => {
         planLink.addEventListener("click", () => {

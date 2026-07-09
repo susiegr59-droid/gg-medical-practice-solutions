@@ -376,6 +376,15 @@ h3 {
   gap: 16px;
 }
 
+.qa-toggle {
+  justify-self: start;
+  margin-top: 4px;
+}
+
+.qa-plan-panel[hidden] {
+  display: none;
+}
+
 .qa-plan {
   display: grid;
   align-content: start;
