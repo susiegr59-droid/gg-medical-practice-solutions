@@ -19,6 +19,8 @@ if (consultationForm) {
   const selectedQaPlan = document.querySelector("#selected-qa-plan");
   const formInterest = document.querySelector("#form-interest");
   const messageField = consultationForm.querySelector('textarea[name="message"]');
+  const patientProblemField = consultationForm.querySelector('textarea[name="patient_problem"]');
+  const patientHelpFields = document.querySelector("#patient-help-fields");
   const params = new URLSearchParams(window.location.search);
   const planMap = {
     "quick-help": "Quick Help - 1 question/month ($35)",
@@ -56,6 +58,11 @@ if (consultationForm) {
   if (requestedService) {
     serviceSelect.value = requestedService.label;
     messageField.value = requestedService.message;
+
+    if (params.get("service") === "public-auth-help" && patientProblemField) {
+      patientProblemField.value = "I need help with a prior authorization, referral, denial, bill, or insurance paperwork issue.";
+      patientHelpFields?.scrollIntoView({ block: "center" });
+    }
   }
 
   if (params.get("service") === "forms") {

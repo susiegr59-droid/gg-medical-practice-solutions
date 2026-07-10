@@ -100,6 +100,29 @@
                 <option>Training</option>
               </select>
             </label>
+            <fieldset class="patient-help-fields" id="patient-help-fields">
+              <legend>Individual / patient help details</legend>
+              <p>
+                Complete this section if the request is for a patient, family member, prior
+                authorization, denial, referral, or insurance paperwork issue.
+              </p>
+              <label>
+                Patient name
+                <input type="text" name="patient_name" autocomplete="name">
+              </label>
+              <label>
+                Patient address
+                <input type="text" name="patient_address" autocomplete="street-address" placeholder="Street, city, state">
+              </label>
+              <label>
+                Patient phone number
+                <input type="tel" name="patient_phone" autocomplete="tel" placeholder="Best callback number">
+              </label>
+              <label>
+                Problem they need help with
+                <textarea name="patient_problem" rows="4" placeholder="Briefly describe the authorization, denial, referral, bill, or insurance issue."></textarea>
+              </label>
+            </fieldset>
             <label>
               Message
               <textarea name="message" rows="4" placeholder="Tell us a little about your practice or question."></textarea>

@@ -1018,6 +1018,30 @@ label {
   text-transform: uppercase;
 }
 
+.patient-help-fields {
+  display: grid;
+  gap: 14px;
+  margin: 4px 0;
+  padding: 18px;
+  background: #f4f8fb;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.patient-help-fields legend {
+  padding: 0 6px;
+  color: var(--navy);
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.patient-help-fields p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 input,
 select,
 textarea {
